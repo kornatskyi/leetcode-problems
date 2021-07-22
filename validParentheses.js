@@ -8,41 +8,53 @@ var isValid = function (s) {
     let isCurlyBracketsOpen = false;
     let isSquareBracketsOpen = false;
 
-    for (const char of s) {
-        if (((char === '(' && !isParenthesisOpen) || (char === ')' && isParenthesisOpen)) && !isCurlyBracketsOpen && !isSquareBracketsOpen) {
-            isParenthesisOpen = !isParenthesisOpen
 
-        } else
-            if (((char === '{' && !isCurlyBracketsOpen) || (char === '}' && isCurlyBracketsOpen)) && !isParenthesisOpen && !isSquareBracketsOpen) {
-                isCurlyBracketsOpen = !isCurlyBracketsOpen
-            } else
-                if (((char === '[' && !isSquareBracketsOpen) || (char === ']' && isSquareBracketsOpen)) && !isCurlyBracketsOpen && !isParenthesisOpen) {
-                    isSquareBracketsOpen = !isSquareBracketsOpen
-                } else {
-                    console.log(char);
+    for (const c of s) {
+        console.log(c);
+        
+    }
+
+
+
+
+    // for (const char of s) {
+    //     if (((char === '(' && !isParenthesisOpen) || (char === ')' && isParenthesisOpen)) && !isCurlyBracketsOpen && !isSquareBracketsOpen) {
+    //         isParenthesisOpen = !isParenthesisOpen
+
+    //     } else
+    //         if (((char === '{' && !isCurlyBracketsOpen) || (char === '}' && isCurlyBracketsOpen)) && !isParenthesisOpen && !isSquareBracketsOpen) {
+    //             isCurlyBracketsOpen = !isCurlyBracketsOpen
+    //         } else
+    //             if (((char === '[' && !isSquareBracketsOpen) || (char === ']' && isSquareBracketsOpen)) && !isCurlyBracketsOpen && !isParenthesisOpen) {
+    //                 isSquareBracketsOpen = !isSquareBracketsOpen
+    //             } else {
+    //                 console.log(char);
                   
-                    return false;
-                }
+    //                 return false;
+    //             }
                 
-    }
+    // }
 
 
 
 
-    if (!isParenthesisOpen && !isCurlyBracketsOpen && !isSquareBracketsOpen) {
-        return true
-    }
+    // if (!isParenthesisOpen && !isCurlyBracketsOpen && !isSquareBracketsOpen) {
+    //     return true
+    // }
 
 
 
 };
 
-console.log("()         ", isValid("()"));
-console.log("()[]{}     ", isValid("()[]{}"));
-console.log("(]         ", isValid("(]"));
-console.log("([)]       ", isValid("([)]"));
-console.log("{[]}       ", isValid("{[]}"));
-console.log("(((       ", isValid("((()))"));
+console.log("({[]})         ", isValid("({[]})"));
+
+
+// console.log("()         ", isValid("()"));
+// console.log("()[]{}     ", isValid("()[]{}"));
+// console.log("(]         ", isValid("(]"));
+// console.log("([)]       ", isValid("([)]"));
+// console.log("{[]}       ", isValid("{[]}"));
+// console.log("(((       ", isValid("((("));
 
 
 
