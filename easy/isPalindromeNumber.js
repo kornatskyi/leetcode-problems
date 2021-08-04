@@ -2,17 +2,27 @@
  * @param {number} x
  * @return {boolean}
  */
- var isPalindrome = function(x) {
+var isPalindrome = function (x) {
 
-    const xarr = String(x);
-    let i = 0;
-    let j = 0;
-    while(i < (xarr.length % 2 === 1? (xarr.length / 2) + 1 : xarr.length / 2)) {
-        i++;
-        j++;
-        if(xarr[i] !== xarr[xarr.length - j - 1]) {
+    let i
+    let j
+    const xarr = Strint(x)
+    if((xarr.length % 2) === 1) {
+         i = xarr.length / 2 - 0.5;
+         j = xarr.length / 2 - 0.5;
+    } else {
+        i = (xarr.length / 2);
+        j = (xarr.length / 2) - 1;
+    }
+    while (j >= 0) {
+
+        console.log("ss");
+        if (xarr[i] !== xarr[j]) {
             return false
         }
+        i++;
+        j--;
+    
     }
     return true
 };
