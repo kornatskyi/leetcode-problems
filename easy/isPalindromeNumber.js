@@ -4,7 +4,7 @@
  */
  var isPalindrome = function(x) {
 
-    const xarr =(x+ "").split('');
+    const xarr = String(x);
     let i = 0;
     let j = 0;
     while(i < (xarr.length % 2 === 1? (xarr.length / 2) + 1 : xarr.length / 2)) {
@@ -26,3 +26,22 @@ console.log(isPalindrome(l));
 console.log(isPalindrome(k));
 
 console.log();
+
+
+
+
+//"isPalinfrome number faster then 47, less memory then 83"
+// var isPalindrome = function(x) {
+
+//     const xarr =(x+ "").split('');
+//     let i = 0;
+//     let j = 0;
+//     while(i < (xarr.length % 2 === 1? (xarr.length / 2) + 1 : xarr.length / 2)) {
+//         i++;
+//         j++;
+//         if(xarr[i] !== xarr[xarr.length - j - 1]) {
+//             return false
+//         }
+//     }
+//     return true
+// };
