@@ -85,40 +85,13 @@ function linkedListToArray(linkedList) {
 
 var removeNthFromEnd = function (head, n) {
 
-    const linkedList = new LinkedList(head)
 
-    if (n === 1 && 1 === linkedList.size()) {
-        return null;
-    }
-    if (n === linkedList.size() && n > 1) {
-        linkedList.head = linkedList.head.next;
-        return linkedList.head;
-    }
-    const elementIndexFromStart = linkedList.size() - 1 - n;
-    let i = 0;
+    const array = linkedListToArray(new LinkedList(head))
+    array.splice(array.length - n, 1)
 
-    function recursion(node) {
-
-        if (i === elementIndexFromStart) {
-
-
-
-            node.next = node.next.next;
-            return
-        }
-        i++;
-
-        recursion(node.next)
-
-
-    }
-
-    recursion(linkedList.head)
-
-    return linkedList.head
-
-
-
+    
+    return arrayToLinkedList(array).getFirst()
+    
 };
 
 
@@ -139,6 +112,7 @@ test(removeNthFromEnd, { head: arrayToLinkedList([1, 2, 3, 4]).getFirst(), n: 4 
 
 
 function test(func, input, output) {
+    console.log(linkedListToArray(new LinkedList(func(input.head, input.n))));
 
     if (arraysEqual(linkedListToArray(new LinkedList(func(input.head, input.n))), output)) {
         console.log("For ", input.head, " PASSED!!!");
