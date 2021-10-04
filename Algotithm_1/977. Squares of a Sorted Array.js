@@ -4,7 +4,28 @@
  */
 var sortedSquares = function (nums) {
 
+    const result = new Array(nums.length)
 
+    nums = nums.map(e => e * e)
+
+    let l = 0
+    let r = nums.length - 1
+    let i = nums.length - 1
+
+    while (i >= 0) {
+
+        if (nums[l] >= nums[r]) {
+            result[i] = nums[l]
+            l++;
+        } else {
+            result[i] = nums[r]
+            r--
+        }
+        i--
+    }
+
+
+    return result;
 
 
 };
