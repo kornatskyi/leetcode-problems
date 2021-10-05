@@ -115,6 +115,7 @@ var removeNthFromEnd = function (head, n) {
         return head.next
     }
 
+
     let nodeFromTheBeginning = 0
     headCopy = head;
     while (headCopy !== null) {
@@ -128,7 +129,6 @@ var removeNthFromEnd = function (head, n) {
 
 
 };
-
 
 
 
