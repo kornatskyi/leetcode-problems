@@ -76,31 +76,75 @@ function linkedListToArray(linkedList) {
     }
     recursion(linkedList.getFirst())
     return array
+
+}
+
+function linkedListHeadToArray(head) {
+    const arr = [head.val]
+    while (head.next !== null) {
+        arr.push(head.next.val)
+        head = head.next
+    }
+    return arr
 }
 
 
-var middleNode = function (head) {
-    let innerHead = head
-    let counter = 0
-    while (innerHead !== null) {
-        innerHead = innerHead.next
-        counter++;
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function (head, n) {
+
+
+    let headCopy = head;
+    let length = 0
+    while (headCopy !== null) {
+        headCopy = headCopy.next
+        length++;
     }
 
+    if (n === length) {
+        return head.next
+    }
 
-    for (let i = 0; i <= Math.floor(counter / 2) + 1; i++) {
-
-        if (i === Math.floor(counter / 2)) {
-            return head;
+    let nodeFromTheBeginning = 0
+    headCopy = head;
+    while (headCopy !== null) {
+        nodeFromTheBeginning++;
+        if (nodeFromTheBeginning === length - n) {
+            headCopy.next = headCopy.next.next
+            return head
         }
-        head = head.next
-
+        headCopy = headCopy.next
     }
+
 
 };
 
-console.log(middleNode(arrayToLinkedList([1, 2, 3, 4, 5]).getFirst()));
-console.log(middleNode(arrayToLinkedList([1, 2, 3, 4, 5, 6]).getFirst()));
 
 
+
+function test(result, func, ...args) {
+
+
+    const fR = linkedListHeadToArray(func(...args));
+    console.log(fR);
+    if (result.every((e, i) => e === fR[i])) {
+        console.log("Pass!");
+        return
+    }
+    console.log("Failed!");
+    return
+}
+
+
+test([1, 2, 3, 5], removeNthFromEnd, arrayToLinkedList([1, 2, 3, 4, 5]).getFirst(), 5)
 

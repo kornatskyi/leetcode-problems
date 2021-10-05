@@ -63,3 +63,13 @@ function linkedListToArray(linkedList) {
     recursion(linkedList.getFirst())
     return array
 }
+
+
+function linkedListHeadToArray(head) {
+    const arr = []
+    while (head !== null) {
+        arr.push(head.next)
+        head = head.next
+    }
+    return arr
+}
