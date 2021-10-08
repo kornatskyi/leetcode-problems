@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Launch Solution",
+      "request": "launch",
+      "mainClass": "Solution",
+      "projectName": "leetcode-problems_77d34def"
+    },
+    {
       "type": "firefox",
       "request": "launch",
       "name": "Launch Chrome against localhost",

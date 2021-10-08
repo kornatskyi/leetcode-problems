@@ -4,45 +4,32 @@
  * @return {boolean}
  */
 var checkInclusion = function (s1, s2) {
-    for (let i = 0; i <= s2.length - s1.length; i++) {
-
-        let j = 0
-        let sliced2 = s2.slice(i, i + s1.length);
-        let s11 = [...s1]
-
-        while (j < s1.length) {
-            if (!s11.includes(s2[j + i])) {
-                break
-            }
-            if (!sliced2.includes(s11[j])) {
-                break
-
-            }
-            s11[s11.indexOf(s2[j + i])] = ''
-
-            j++
-            if (j === s1.length) {
-                return true;
-            }
-
+    const s1Map = {};
+    for (let i = 0; i < s1.length; i++) {
+        s1Map[s1[i]] = (s1Map[s1[i]] || 0) + 1;
+    }
+    function sum(s1Map) {
+        let count = 0
+        for (const key in s1Map) {
+            count = count + s1Map[key]
         }
-
-
-        // let s11 = [...s1]
-        // if (s2.slice(i, i + s1.length).split('').every(char => {
-
-        //     const b = s11.includes(char)
-        //     s11[s11.indexOf(char)] = ''
-        //     return b
-
-        // })) {
-
-        //     return true
-        // }
+        return count
+    }
+    let s1MapCopy = { ...s1Map }
+    for (let i = 0; i < s2.length; i++) {
+        if (s1MapCopy[s2[i]]) {
+            s1MapCopy[s2[i]]--;
+            if (sum(s1MapCopy) <= 0) return true
+        } else {
+            i = i - (s1.length - sum(s1MapCopy))
+            s1MapCopy = { ...s1Map }
+        }
     }
     return false
 
 };
+
+
 
 
 
@@ -53,6 +40,7 @@ console.log(checkInclusion("hello", "olleh"));
 console.log(checkInclusion("hello", "sdfsfhellofsd"));
 console.log(checkInclusion("d", "fdsggdfs"));
 console.log(checkInclusion("hello", "ooolleoooleh"));
+console.log(checkInclusion("adc", "dcda"));
 
 
 
@@ -66,3 +54,5 @@ console.log(checkInclusion("hello", "ooolleoooleh"));
 "fdsggdfs"
 "hello"
 "ooolleoooleh"
+"adc"
+"dcda"
