@@ -4,6 +4,4 @@
  */
 var maxSubArray = function (nums) {
 
-};
-
-
+}; 
