@@ -1,4 +1,4 @@
-class ListNode {
+export class ListNode {
   val: number;
   next: ListNode | null;
   constructor(val: number = -1, next: ListNode | null = null) {
@@ -7,7 +7,7 @@ class ListNode {
   }
 }
 
-class MyLinkedList {
+export class MyLinkedList {
   head: ListNode | null;
 
   constructor() {
@@ -81,19 +81,6 @@ class MyLinkedList {
     prev.next = temp ? temp!.next : null;
   }
 }
-
-const linkedList = new MyLinkedList();
-console.log(linkedList);
-console.log(linkedList.get(0));
-linkedList.addAtHead(1);
-console.log(linkedList);
-linkedList.addAtTail(3);
-console.log(JSON.stringify(linkedList));
-linkedList.addAtIndex(0, 12);
-linkedList.addAtIndex(0, 10);
-console.log(JSON.stringify(linkedList));
-linkedList.deleteAtIndex(0);
-console.log(JSON.stringify(linkedList));
 
 /**
  * Your MyLinkedList object will be instantiated and called as such:
