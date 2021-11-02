@@ -25,6 +25,7 @@ var copyRandomList = function (head) {
 
     let temp = head
     let l = 1
+    // Create new linked list and copy values and random references
     while (temp.next) {
         l++
         temp = temp.next
@@ -34,24 +35,27 @@ var copyRandomList = function (head) {
 
     }
 
-    // let tail = temp
+    // Connect tails and heads of 2 linked lists, and make circled linked list
+    let tail = temp
     let newTail = newTemp
-
-    // tail.next = newHead
-    newTail.next = newHead
-
+    tail.next = newHead
     temp = head
     newTemp = newHead
+    newTail.next = temp
 
 
-    while (newTemp !== newHead) {
-        let randomTemp = newTemp.random
+    // Go through all elements in the first linked list
+    while (newTemp !== head) {
+        let randomTemp = temp.random
+        // If random value not null go through our loop linked lists's length times
+        // starting iteration from the initial list, so because now we have a loop after l steps we'll get
+        // mirrored element from the second list.
         if (randomTemp) {
             for (let i = 0; i < l; i++) {
                 randomTemp = randomTemp.next
             }
         }
-
+        // Assigning the last value of iteration to the random value
         newTemp.random = randomTemp
         temp = temp.next
         newTemp = newTemp.next
@@ -59,6 +63,9 @@ var copyRandomList = function (head) {
 
     }
 
+    // Separate list, because leetcode complains if you change the initial list.
+    // We could create third list and not change initial, but it would take extra linear space
+    tail.next = null
     newTail.next = null
 
     return newHead
