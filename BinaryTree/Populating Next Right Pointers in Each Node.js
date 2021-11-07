@@ -37,6 +37,7 @@ var connect = function (root) {
 
     }
 
+    let treeLvl = 0
     let powerOf2 = 2;
     for (let i = 0; i < nodeArray.length; i++) {
 
@@ -54,12 +55,3 @@ var connect = function (root) {
 
 
 };
-
-
-
-
-
-
-
-
-
